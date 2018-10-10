@@ -113,11 +113,11 @@
             },
             "pipeline_steps": {
                 "_layout": "array",
-                "tool": {
+                "script": {
                     "_multi_value": true,
                     "name": {
                         "_type": "string",
-                        "_comment": "this is a recognized name of the software tool"
+                        "_comment": "This is the script name used in the pipeline steps to create the dataset"
                     },
                     "description": {
                         "_type": "string"
@@ -132,7 +132,8 @@
                         "_comment": "reference or required prereqs",
                         "name": {
                             "_type": "string",
-                            "_comment": "Public searchable name for reference or prereq"
+                            "_comment": "Public searchable name for reference or prereq",
+                            "_optional": true
                         },
                         "URI": {
                             "_type": "uri"
@@ -234,10 +235,10 @@
             },
             "error_domain": {
                 "empirical_error": {
-                    "stats": {
+                    "statistics": {
                         "_type": "object",
                         "_multi_value": true,
-                        "_comment": "Key-value pairs that describe the content of the output data file"
+                        "_comment": "Unique value statistics of the content of the output data file"
                     }
                 }
             }
