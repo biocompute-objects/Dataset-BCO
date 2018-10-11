@@ -117,7 +117,7 @@
                     "_multi_value": true,
                     "name": {
                         "_type": "string",
-                        "_comment": "This is the script name used in the pipeline steps to create the dataset"
+                        "_comment": "This is the script or tool name used in the pipeline steps to create the dataset"
                     },
                     "description": {
                         "_type": "string"
