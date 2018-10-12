@@ -115,8 +115,8 @@
                         "Records which fall under one or more following criteria's are flagged and eliminated and can be accessed using the log file. The elimination steps include -",
                         "a. If the protein accession is not included in UniProt protein list - UniProt Nov-2017 Release",
                         "b. If the amino acid position does not match to the amino acid on the associated position on fasta sequence - UniProt Nov-2017 Release",
-                        "c. If the id (UnicarbKB structure id) is not present in input file",
-                        "d. If the glycosylation type (linkage type) is not retrieved through step 3",
+                        "c. If the id [UnicarbKB structure id] is not present in input file",
+                        "d. If the glycosylation type [linkage type] is not retrieved through step 3",
                         "e. If a serine or threonine is reported for an N-linked glycan structure",
                         "f. If an asparagine is reported for an O-linked glycan structure"
                     ],
