@@ -55,7 +55,7 @@ I/O Domain
        
   Output Subdomain:
     name: human_proteoform_glycosylation_sites_unicarbkb_glytoucan.log
-    mediatype: text
+    mediatype: txt
     source/uri: http://data.glygen.org/datasets/logs/human_proteoform_glycosylation_sites_unicarbkb_glytoucan.log
 
     name: human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv
