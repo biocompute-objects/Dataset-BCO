@@ -23,7 +23,7 @@ Description Domain
     Step 1: The input file was retrieved directly from source.
     Step 2: The UniProt protein accessions in the input file were mapped to UniProt canonical accessions using a python script.
     Step 3: The glycosylation type [linkage type] was retrieved through UniCarbKB structure webpage using scripts [make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2a.py, make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2b.py]
-    Step 4: The file was processed for quality check using a python script[make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step3.py]. Records which fall under one or more following criteria's are flagged and eliminated [eliminated records can be acessed using log file]:
+    Step 4: The file was processed for quality check using a python script[make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step3.py]. Records which fall under one or more following criteria's are flagged and eliminated [eliminated records can be accessed using log file]:
              a. If the protein accession is not included in UniProt protein list [UniProt Nov-2017 Release]
              b. If the amino acid position does not match to the amino acid on the associated position on fasta sequence [UniProt Nov-2017 Release]
              c. If the id [UnicarbKB structure id] is not present in input file.
