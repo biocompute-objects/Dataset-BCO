@@ -73,10 +73,14 @@
                 "description":"Python script for mapping the UniProt accessions in the input file to the UniProt canonical accessions ",
                 "version": "",
                 "input_list":[
-                    "human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"
+                    {
+						"uri": "/human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"
+					}
                 ],
                 "output_list":[
-                    "human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"
+                    {
+						"uri":"human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"
+					}
                 ]
             },
             {
