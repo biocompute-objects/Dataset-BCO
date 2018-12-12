@@ -17,8 +17,8 @@
                 }
             }
         ],
-        "created": "2018-02-21T14:46:55-5:00",
-        "modified": "2018-10-10T11:34:02-5:00",
+        "created": "2018-07-09T11:34:02-5:00",
+        "modified": "2018-11-22T14:44:02-5:00",
         "contributors":[
             {
                 "name": "Matthew Campbell",
@@ -33,16 +33,22 @@
                 "contribution":["curatedBy"]
             },
             {
+                "name": "Brian Fochtman",
+                "affiliation": "The George Washington University",
+                "email": "bfochtman@email.gwu.edu",
+                "contribution":["createdBy"]
+            },           
+            {
                 "name": "Robel Kahsay",
                 "affiliation": "The George Washington University",
-                "email": "hadley_king@gwu.edu",
+                "email": "rykahsay@email.gwu.edu",
                 "contribution":["createdBy"]
             }
         ],
         "license": "https://creativecommons.org/licenses/by/4.0/"
     },
     "usability_domain":[
-        "List of human [taxid:9606] proteins with information on glycosylation sites from UniCarbKB database [https://academic.oup.com/nar/article/42/D1/D215/1052197, https://doi.org/10.1093/nar/gkt1128]"
+        "List of human [taxid:9606] proteins with information on glycosylation sites from UniCarbKB database [https://academic.oup.com/nar/article/42/D1/D215/1052197, https://doi.org/10.1093/nar/gkt1128]. The file also includes GlyTouCan accessions and UniCarbKB structure ids for associated glycan structures."
     ],
     "extension_domain":{
         "license":{
@@ -75,54 +81,37 @@
         "pipeline_steps":[
             {
                 "step_number":1,
-                "name": "ac2canonical.py",
-                "description": "Python script for mapping the UniProtKB accessions in the input file to the UniProtKB canonical accessions ",
+                "name": "make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2.py",
+                "description": "Python script for assigning glycosylation type (linkage type)",
                 "version": "",
                 "input_list":[
                     {
-                        "uri": "/human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"
+                        "uri": "/unicarbkb_human_2018_10_31_02_22_23.clean.csv"
+                    },
+                    {
+                        "uri": "/human_glytoucan_140918_2018_10_31_02_17_32.txt"
                     }
                 ],
                 "output_list":[
                     {
-                        "uri": "human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"
+                        "uri": "/human_glycosylation_types.csv"
+                    },
+                    {
+                        "uri": "/human_glycosylation_types.log"
                     }
                 ]
             },
             {
                 "step_number":2,
-                "name": "make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2b.py",
-                "description": "Python scripts for retrieving glycosylation type or linkage type through UniCarbKB structure webpage ",
-
-                "input_list":[
-                    {"uri": "human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"}
-                ],
-                "output_list":[
-                    {"uri": "human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv"}
-                ]
-            },
-            {
-                "step_number":2,
-                "name": "make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2b.py",
-                "description": "Python scripts for retrieving glycosylation type or linkage type through UniCarbKB structure webpage ",
-                "input_list":[
-                    {"uri": "human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt"}
-                ],
-                "output_list":[
-                    {"uri": "human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv"}
-                ]
-            },
-            {
-                "step_number":3,
                 "name": "make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step3.py",
-                "description": "Python script for quality check of the processed file. Records which fall under one or more following criteria's are flagged and eliminated and can be accessed using the log file. The elimination steps include -   a. If the protein accession is not included in UniProtKB protein list - UniProtKB Nov-2017 Release   b. If the amino acid position does not match to the amino acid on the associated position on fasta sequence - UniProtKB Nov-2017 Release  c. If the id (UnicarbKB structure id) is not present in input file  d. If the glycosylation type (linkage type) is not retrieved through step 3  e. If a serine or threonine is reported for an N-linked glycan structure  f. If an asparagine is reported for an O-linked glycan structure",
+                "description": "Python scripts for mapping to canonical protein accession and process data fro quality checks. a. If the protein accession is not included in UniProt protein list [UniProt Nov-2017 Release]. b. If the amino acid position does not match to the amino acid on the associated position on fasta sequence [UniProt Nov-2017 Release]. c. If the id (UnicarbKB structure id) is not present in input file. d. If the glycosylation type (linkage type) is not retrieved through step 2. e. If a serine or threonine is reported for an N-linked glycan structure. f. If an asparagine is reported for an O-linked glycan structure. g. If the glycosylation type (linkage type) has both "N-linked;O-linked" assignment through step 2."
                 "input_list":[
-                    {"uri": "human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv"},
-                    {"uri": "human_protein_all.fasta"}
+                    {"uri": "/unicarbkb_human_2018_10_31_02_22_23.clean.csv"},
+                    {"uri": "/human_protein_all.fasta"}
                 ],
                 "output_list":[
-                    {"uri": "human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv"},
-                    {"uri": "human_proteoform_glycosylation_sites_unicarbkb_glytoucan.log"}
+                    {"uri": "/human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv"},
+                    {"uri": "/human_proteoform_glycosylation_sites_unicarbkb_glytoucan.log"}
                 ]
             }
         ]
@@ -131,17 +120,7 @@
         "script":[
             {
                 "uri": {
-                    "uri": "https://github.com/glygener/glygen-backend-integration/blob/master/integration/ac2canonical.py"
-                }
-            },
-            {
-                "uri": {
-                    "uri": "https://github.com/glygener/glygen-backend-integration/blob/master/integration/make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2a.py"
-                }
-            },
-            {
-                "uri": {
-                    "uri": "https://github.com/glygener/glygen-backend-integration/blob/master/integration/make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2b.py"
+                    "uri": "https://github.com/glygener/glygen-backend-integration/blob/master/integration/make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2.py"
                 }
             },
             {
@@ -180,8 +159,15 @@
         "input_subdomain":[
             {
                 "uri":{
-                    "filename": "human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt",
-                    "uri": "http://data.glygen.org/datasets/source/human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt",
+                    "filename": "unicarbkb_human_2018_10_31_02_22_23.clean.csv",
+                    "uri": "http://data.glygen.org/datasets/source/unicarbkb_human_2018_10_31_02_22_23.clean.csv",
+                    "access_time": "2018-10-10T11:34:02-5:00"
+                }
+            },
+            {
+                "uri":{
+                    "filename": "human_glytoucan_140918_2018_10_31_02_17_32.txt",
+                    "uri": "http://data.glygen.org/datasets/source/human_glytoucan_140918_2018_10_31_02_17_32.txt",
                     "access_time": "2018-10-10T11:34:02-5:00"
                 }
             },
@@ -194,6 +180,22 @@
             }
         ],
         "output_subdomain":[
+            {
+                "mediatype": "csv/text",
+                "uri":{
+                    "filename": "human_glycosylation_types.csv",
+                    "uri": "http://data.glygen.org/datasets/source/human_glycosylation_types.csv",
+                    "access_time": "2018-10-10T11:37:02-5:00"
+                }
+            },
+            {
+                "mediatype": "csv/text",
+                "uri":{
+                    "filename": "human_glycosylation_types.log",
+                    "uri": "http://data.glygen.org/datasets/logs/human_glycosylation_types.log",
+                    "access_time": "2018-10-10T11:37:02-5:00"
+                }
+            },
             {
                 "mediatype": "csv/text",
                 "uri":{
@@ -219,28 +221,28 @@
                     "comment": "Unique value statistics for the dataset"
                 },
                 {
-                    "key": "uniprotkb_canonical_ac",
-                    "value":92,
+                    "key": "uniprotkb_acc_canonical",
+                    "value":58,
                     "description": "Accession assigned to the protein isoform chosen to be the canonical sequence in UniProtKB database"
                 },
                 {
                     "key": "glycosylation_site",
-                    "value":223,
+                    "value":162,
                     "description": "Site on the protein sequence where glycosylation is observed"
                 },
                 {
                     "key": "evidence",
-                    "value":163,
+                    "value":127,
                     "description": "NCBI PubMed Id (PMID) as evidence for the entry"
                 },
                 {
                     "key": "unicarbkb_id",
-                    "value":984,
+                    "value":807,
                     "description": "UnicarbKB data structure identifier"
                 },
                 {
                     "key": "glytoucan_ac",
-                    "value":824,
+                    "value":675,
                     "description": "Unique accession assigned to the registered glycan structure in GlyTouCan database"
                 },
                 {
@@ -250,7 +252,7 @@
                 },
                 {
                     "key": "glycosylation_type",
-                    "value":3,
+                    "value":2,
                     "description": "Type of glycosylation [linkage type]"
                 }
             ]
