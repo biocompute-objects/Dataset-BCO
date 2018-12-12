@@ -7,7 +7,7 @@ Provenance Domain
   Modified by: Rahi Navelkar [rsn13@gwu.edu]
   Digital Signature: RYFNNKE22594E007JKV457
   Review status: Approved
-  Contribution: Matthew Campbell - m.campbell2@griffith.edu.au [contributedBy], Robel Kahsay - rykahsay@email.gwu.edu [createdBy], Rahi Navelkar [curatedBy]
+  Contribution: Matthew Campbell - m.campbell2@griffith.edu.au [contributedBy], Brian Fochtman - bfochtman@email.gwu.edu [contributedBy], Robel Kahsay - rykahsay@email.gwu.edu [createdBy], Rahi Navelkar [curatedBy]
   License: Data - Attribution 4.0 International CC BY 4.0 [https://creativecommons.org/licenses/by/4.0/]
 		   Scripts - GNU General Public License v3.0 [https://www.gnu.org/licenses/gpl-3.0.en.html]
            Readme - Attribution 4.0 International CC BY 4.0 [https://creativecommons.org/licenses/by/4.0/]
