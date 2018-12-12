@@ -42,7 +42,7 @@
         "license": "https://creativecommons.org/licenses/by/4.0/"
     },
     "usability_domain":[
-        "List of human [taxid:9606] proteins with information on glycosylation sites from UniCarbKB database [https://academic.oup.com/nar/article/42/D1/D215/1052197, https://doi.org/10.1093/nar/gkt1128]"
+        "List of human [taxid:9606] proteins with information on glycosylation sites from UniCarbKB database [https://academic.oup.com/nar/article/42/D1/D215/1052197, https://doi.org/10.1093/nar/gkt1128]. The file also includes GlyTouCan accessions and UniCarbKB structure ids for associated glycan structures."
     ],
     "extension_domain":{
         "license":{
