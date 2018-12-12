@@ -48,11 +48,11 @@ I/O Domain
     source/uri: http://data.glygen.org/datasets/source/unicarbkb_human_2018_10_31_02_22_23.clean.csv
 
     name: human_glytoucan_140918_2018_10_31_02_17_32.txt
-    mime-type: txt
+    mediatype: txt
     source/uri: http://data.glygen.org/datasets/source/human_glytoucan_140918_2018_10_31_02_17_32.txt
 
     name: human_protein_all.fasta
-    mediatype fasta
+    mediatype: fasta
     source/uri:http://data.glygen.org/GLYDS00053     
            
   Output Subdomain:
