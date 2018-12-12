@@ -1,13 +1,13 @@
 Provenance Domain
   Name: human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv
   Title: Glycosylation Sites [UniCarbKB]
-  Created: 2018-02-21T14:46:55-5:00
+  Created: 2018-07-09T11:34:02-5:00
   Created by: Rahi Navelkar [rsn13@gwu.edu]
-  Modified: 2018-10-10T11:34:02-5:00    
+  Modified: 2018-11-22T14:44:02-5:00    
   Modified by: Rahi Navelkar [rsn13@gwu.edu]
   Digital Signature: RYFNNKE22594E007JKV457
   Review status: Approved
-  Contribution: Matthew Campbell - m.campbell2@griffith.edu.au [contributedBy], Robel Kahsay - rykahsay@email.gwu.edu [createdBy], Rahi Navelkar [curatedBy]
+  Contribution: Matthew Campbell - m.campbell2@griffith.edu.au [contributedBy], Brian Fochtman - bfochtman@email.gwu.edu [createdBy], Robel Kahsay - rykahsay@email.gwu.edu [createdBy], Rahi Navelkar [curatedBy]
   License: Data - Attribution 4.0 International CC BY 4.0 [https://creativecommons.org/licenses/by/4.0/]
 		   Scripts - GNU General Public License v3.0 [https://www.gnu.org/licenses/gpl-3.0.en.html]
            Readme - Attribution 4.0 International CC BY 4.0 [https://creativecommons.org/licenses/by/4.0/]
@@ -20,42 +20,52 @@ Description Domain
   Keywords: protein, canonical, glycosylation, glycan
   
   Pipeline Steps:
-    Step 1: The input file was retrieved directly from source.
-    Step 2: The UniProt protein accessions in the input file were mapped to UniProt canonical accessions using a python script.
-    Step 3: The glycosylation type [linkage type] was retrieved through UniCarbKB structure webpage using scripts [make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2a.py, make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2b.py]
-    Step 4: The file was processed for quality check using a python script[make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step3.py]. Records which fall under one or more following criteria's are flagged and eliminated [eliminated records can be accessed using log file]:
-             a. If the protein accession is not included in UniProt protein list [UniProt Nov-2017 Release]
-             b. If the amino acid position does not match to the amino acid on the associated position on fasta sequence [UniProt Nov-2017 Release]
-             c. If the id [UnicarbKB structure id] is not present in input file.
-             d. If the glycosylation type [linkage type] is not retrieved through step 3
-             e. If a serine or threonine is reported for an N-linked glycan structure. 
-             f. If an asparagine is reported for an O-linked glycan structure.
+    Step 1: The input file was retrieved directly from source was "cleaned" for further processing.
+    Step 2: The glycosylation type (linkage type) was assigned using a python script [make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2.py] based on motif label provided by the author. 
+    Step 3: The UniProtKB protein accessions were mapped to canonical accessions and the final data was processed for quality check using a python script[make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step3.py]. Records which fall under one or more following criteria's were flagged and eliminated (eliminated records can be accessed using the log file through Output subdomain):
+    a. If the protein accession is not included in UniProt protein list [UniProt Nov-2017 Release]
+    b. If the amino acid position does not match to the amino acid on the associated position on fasta sequence [UniProt Nov-2017 Release]
+    c. If the id (UnicarbKB structure id) is not present in input file.
+    d. If the glycosylation type (linkage type) is not retrieved through step 2.
+    e. If a serine or threonine is reported for an N-linked glycan structure. 
+    f. If an asparagine is reported for an O-linked glycan structure.
+    g. If the glycosylation type (linkage type) has both "N-linked;O-linked" assignment through step 2.
 
 Execution Domain:
   Script Access Type: Text
-  Scripts: make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2a.py, make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2b.py, make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step3.py
+  Scripts: make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step2.py, make-proteoform_glycosylation_sites_unicarbkb_glytoucan-csv-step3.py
   Script Location: https://github.com/glygener/glygen-backend/blob/master/integration/ 
   Script Driver: manual
-  Platform: CentOS7
-    
+  Platform: CentOS7  
   Software Prerequisites:
     Name: Python
     Version: 2.7.13
     
 I/O Domain
   Input Subdomain: 
-    name: human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt
+    name: unicarbkb_human_2018_10_31_02_22_23.clean.csv
     mediatype: txt
-    source/uri: http://data.glygen.org/datasets/source/human_protein_position_pmid_id_aminoacid_glytoucan_2018_09_04_07_51_27.txt
+    source/uri: http://data.glygen.org/datasets/source/unicarbkb_human_2018_10_31_02_22_23.clean.csv
+
+    name: human_glytoucan_140918_2018_10_31_02_17_32.txt
+    mediatype: txt
+    source/uri: http://data.glygen.org/datasets/source/human_glytoucan_140918_2018_10_31_02_17_32.txt
 
     name: human_protein_all.fasta
     mediatype: fasta
-    source/uri: http://data.glygen.org/GLYDS00053
-     
-       
+    source/uri:http://data.glygen.org/GLYDS00053     
+           
   Output Subdomain:
-    name: human_proteoform_glycosylation_sites_unicarbkb_glytoucan.log
+    name: human_glycosylation_types.csv
     mediatype: txt
+    source/uri: http://data.glygen.org/datasets/source/human_glycosylation_types.csv
+
+    name: human_glycosylation_types.log
+    mediatype: txt
+    source/uri: http://data.glygen.org/datasets/logs/human_glycosylation_types.log
+
+    name: human_proteoform_glycosylation_sites_unicarbkb_glytoucan.log
+    mediatype: text
     source/uri: http://data.glygen.org/datasets/logs/human_proteoform_glycosylation_sites_unicarbkb_glytoucan.log
 
     name: human_proteoform_glycosylation_sites_unicarbkb_glytoucan.csv
@@ -74,10 +84,10 @@ I/O Domain
 
 
 	Statistics [Unique Value]:
-	        uniprotkb_canonical_ac: 92
-	        glycosylation_site: 223
-	        evidence: 163
-	        uckb_id: 984
-	        glytoucan_acc: 824
+	        uniprotkb_acc_canonical: 58
+	        glycosylation_site: 162
+	        evidence: 127
+	        uckb_id: 807
+	        glytoucan_acc: 675
 	        amino_acid: 3
-	        glycosylation_type: 3
+	        glycosylation_type: 2
