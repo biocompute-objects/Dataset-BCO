@@ -1,0 +1,48 @@
+Mock up 1:
+"algorithmic_error": {
+	"Single glycan has both 'N-linked/O-linked' associations" : 65,
+	"The protein accession is not included in the GlyGen-Protein Master list (UniProt-Nov 2018)" : 89,
+	"Amino acid position does not match to the amino acid on the associated position on fasta sequence [UniProt Nov-2018 Release]": 67,	
+	"UnicarbKB structure id is not present in input source file": 109,
+	"The glycosylation type (linkage type) is not retrieved via pipeline step 2" : 0,
+	"Serine or threonine is reported for an N-linked glycan structure." : 250,
+	"An asparagine is reported for an O-linked glycan structure.": 109
+}	
+	
+Con: It does not specify the log file name. for eg- The first constrain is from 1a.log and rest are from 2a.log
+
+Mock up 2:
+"algorithmic_error": {
+	"logfile": [
+		{
+			"uniquevalues": 65,
+			"constrain/rule/exclusion_rule":"Single glycan has both 'N-linked/O-linked' associations."
+		},		
+		{
+			"uniquevalues": 89,
+			"constrain/rule/exclusion_rule":"The protein accession is not included in the GlyGen-Protein Master list (UniProt-Nov 2018)"
+		},
+		{
+			"uniquevalues": 67,
+			"constrain":"Amino acid position does not match to the amino acid on the associated position on fasta sequence [UniProt Nov-2018 Release]"
+		},
+		{
+			"uniquevalues": 109,
+			"constrain": "UnicarbKB structure id is not present in input file."
+		},
+		{
+			"uniquevalues": 0,
+			"constrain": "If the glycosylation type (linkage type) is not retrieved from pipeline step 2."
+		},
+		{
+			"uniquevalues": 250,
+			"constrain": "A serine or threonine is reported for an N-linked glycan structure."
+		},
+		{
+			"uniquevalues": 109,
+			"constrain": "An asparagine is reported for an O-linked glycan structure."
+		}
+	]
+}
+
+con: same as mock up 1.
